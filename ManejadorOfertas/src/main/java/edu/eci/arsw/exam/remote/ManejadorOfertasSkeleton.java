@@ -20,7 +20,7 @@ public class ManejadorOfertasSkeleton implements ManejadorOfertasStub{
     }
             
     @Override
-    public void procesarOferta(String codOferente,String codtarea,int monto) {
+    public void agregarOferta(String codOferente,String codtarea,int monto) {
         
         if (!fpers.getMapaOfertasRecibidas().containsKey(codtarea)){
             //se ha recibido la primera oferta 

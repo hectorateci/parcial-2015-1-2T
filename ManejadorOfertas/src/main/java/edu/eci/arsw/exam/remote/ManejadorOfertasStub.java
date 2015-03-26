@@ -11,6 +11,14 @@ package edu.eci.arsw.exam.remote;
  */
 public interface ManejadorOfertasStub {
     
-   public void procesarOferta(String codOferente,String codOferta,int monto);
+
+    /**
+     * Agregar una propiesta económica para la tarea propuesta cuyo código
+     * es 'codTarea'
+     * @param codOferente código de quien realiza la oferta
+     * @param codTarea
+     * @param monto 
+     */
+    public void agregarOferta(String codOferente,String codTarea,int monto);
     
 }
