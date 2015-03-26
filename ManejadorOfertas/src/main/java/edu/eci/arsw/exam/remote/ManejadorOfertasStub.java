@@ -11,6 +11,6 @@ package edu.eci.arsw.exam.remote;
  */
 public interface ManejadorOfertasStub {
     
-    public void dox();     
+   public void procesarOferta(String codOferente,String codOferta,int monto);
     
 }

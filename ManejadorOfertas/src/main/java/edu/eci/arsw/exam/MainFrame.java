@@ -18,11 +18,18 @@ import javax.swing.JOptionPane;
 public class MainFrame extends javax.swing.JFrame {
 
     
-    FreelancerRequestMessageProducer mproducer=null;
+    private FreelancerRequestMessageProducer mproducer=null;
+    
+    private FachadaPersistenciaOfertas fpers=null;
 
     public void setMessageProducer(FreelancerRequestMessageProducer mproducer) {
         this.mproducer = mproducer;
     }
+
+    public void setFachadaPersistenciaOfertas(FachadaPersistenciaOfertas fpers) {
+        this.fpers = fpers;
+    }
+    
     
     
     /**
@@ -131,7 +138,14 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void botonEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnvioActionPerformed
         try {
-            mproducer.sendMessages(this.codigoTareaTF.getText());
+            TareaSolicitada ts=new TareaSolicitada(this.codigoTareaTF.getText(), this.descripcionTareaTF.getText());
+            
+            //enviar un evento para notificar de la tarea disponible
+            mproducer.sendMessages(ts);
+            
+            //guardar los detalles de la tarea solicitada.
+            fpers.getMapaTareasSolicitadas().put(this.codigoTareaTF.getText(), ts);
+            
         } catch (JMSException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showInputDialog("Error:"+ex.getLocalizedMessage());

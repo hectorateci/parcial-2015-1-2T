@@ -1,6 +1,7 @@
 package edu.eci.arsw.exam.events;
 
 import edu.eci.arsw.exam.GeneradorIdentidad;
+import edu.eci.arsw.exam.TareaSolicitada;
 import java.util.Random;
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -21,8 +22,8 @@ public class OfertasMessageListener implements MessageListener {
     public void onMessage(Message m) {
         ActiveMQObjectMessage om = (ActiveMQObjectMessage) m;
         try {
-            String receivedObject = (String) om.getObject();
-            System.out.println("Cliente freelancer #"+GeneradorIdentidad.identidadActual+" recibió:"+receivedObject);
+            TareaSolicitada receivedObject = (TareaSolicitada) om.getObject();
+            System.out.println("Cliente freelancer #"+GeneradorIdentidad.identidadActual+" recibió:"+receivedObject.getCodigoTarea());
             
             int montoOferta = Math.abs(rand.nextInt(99999999));
 

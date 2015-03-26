@@ -16,7 +16,7 @@
     <!--RMI configuration-->
     
     <bean id="manejadorOfertasSkeleton" class="edu.eci.arsw.exam.remote.ManejadorOfertasSkeleton">
-
+        <property name="fachadaPersistenciaOfertas" ref="fachadaPersistenciaOfertas" />
     </bean>
     
     <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
@@ -50,7 +50,11 @@
 
     <bean id="mainFrame" class="edu.eci.arsw.exam.MainFrame">
         <property name="messageProducer" ref="producer"/>
+        <property name="fachadaPersistenciaOfertas" ref="fachadaPersistenciaOfertas"/>
     </bean>
 
+
+    <bean id="fachadaPersistenciaOfertas" class="edu.eci.arsw.exam.FachadaPersistenciaOfertas" />
                         
+                                                              
 </beans>
